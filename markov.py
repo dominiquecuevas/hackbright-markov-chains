@@ -80,11 +80,12 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
-    words = ['Would', 'you'] # start with 2 words at beginning of poem
 
+    words = list(choice(list(chains.keys()))) # get a list-like of keys, make the tuple-keys a list. 
+                                                # choose random tuple-key and put its words in the words list
     # your code goes here
 
-    while words[-1] != 'am?': # keeps looping until the end word
+    while tuple(words[-2:]) in chains: # keeps looping until the last 2 words in words list aren't tuples in chains dictionary
         next_tuple_key = (words[-2], words[-1]) # get the last 2 words from list and put in a tuple
         next_value_as_list = chains[next_tuple_key] # use above tuple to return the chains dictionary's list/value
         next_random_word_from_list = choice(next_value_as_list) # get random word from the returned list
